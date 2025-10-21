@@ -1,0 +1,54 @@
+"use client";
+
+import { useState } from "react";
+import clsx from "clsx";
+import { ColourIcon, TextIcon, CropIcon } from "./icons";
+
+interface ButtonProps {
+  easing: "ease-in" | "ease-out";
+}
+
+export default function Button({ easing }: ButtonProps) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleToggle = () => {
+    setIsOpen(!isOpen);
+  };
+
+  return (
+    <div className="relative">
+      <button
+        onClick={handleToggle}
+        className="bg-white text-gray-800 px-4 py-2 rounded-lg shadow-sm ring  ring-black/15 hover:bg-gray-100 transition font-sans font-medium "
+      >
+        Options
+      </button>
+      <div
+        className={clsx(
+          "absolute top-[120%] w-[150px] text-gray-600 bg-white left-[50%] -translate-x-[50%] flex flex-col p-1.5 rounded-lg shadow-lg ring ring-black/10 transition-all origin-top duration-200",
+          {
+            "opacity-0 pointer-events-none scale-95": !isOpen,
+            "opacity-100 scale-100": isOpen,
+          },
+          {
+            "ease-in": easing === "ease-in",
+            "ease-out": easing === "ease-out",
+          }
+        )}
+      >
+        <div className="flex items-center gap-2 justify-between p-2 rounded-md text-regular hover:text-sky-800 font-medium font-sans text-slate-700 w-full hover:bg-gray-100 cursor-pointer">
+          Colour
+          <ColourIcon />
+        </div>
+        <div className="flex items-center gap-2 justify-between p-2 rounded-md text-regular hover:text-sky-800 font-medium font-sans text-slate-700 w-full hover:bg-gray-100 cursor-pointer">
+          Crop
+          <CropIcon />
+        </div>
+        <div className="flex items-center gap-2 justify-between p-2 rounded-md text-regular hover:text-sky-800 font-medium font-sans text-slate-700 w-full hover:bg-gray-100 cursor-pointer">
+          Text
+          <TextIcon />
+        </div>
+      </div>
+    </div>
+  );
+}
