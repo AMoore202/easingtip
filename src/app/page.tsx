@@ -20,17 +20,17 @@ export default function Home() {
 
   return (
     <div className="relative h-screen w-full flex flex-col gap-10 items-center justify-center pb-20">
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4 items-center">
         <h1 className="font-sans text-3xl font-bold text-gray-700 dark:text-gray-200">
           My UX Tip
         </h1>
         <p className="font-sans text-gray-500 dark:text-gray-400 text-xs">
-          Courtesy of{" "}
+          Borrowed from{" "}
           <Link
             href="https://animations.dev/"
             className="text-sky-600 hover:text-sky-800 dark:text-sky-400 dark:hover:text-sky-200 "
           >
-            Emil Kowalski
+            Emil Kowalski&apos;s Course
           </Link>
         </p>
       </div>
